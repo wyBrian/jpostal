@@ -1,7 +1,7 @@
 #include <jni.h>
 #include <libpostal/libpostal.h>
 
-JNIEXPORT void JNICALL Java_com_mapzen_jpostal_AddressParser_setup
+JNIEXPORT void JNICALL Java_com_alibaba_logistics_lastmile_algorithm_geoinfo_libpostal_binding_AddressParser_setup
   (JNIEnv *env, jclass cls) {
 
     if (!libpostal_setup() || !libpostal_setup_parser()) {
@@ -12,7 +12,7 @@ JNIEXPORT void JNICALL Java_com_mapzen_jpostal_AddressParser_setup
     }
 }
 
-JNIEXPORT void JNICALL Java_com_mapzen_jpostal_AddressParser_setupDataDir
+JNIEXPORT void JNICALL Java_com_alibaba_logistics_lastmile_algorithm_geoinfo_libpostal_binding_AddressParser_setupDataDir
   (JNIEnv *env, jclass cls, jstring jDataDir) {
     const char *datadir = (*env)->GetStringUTFChars(env, jDataDir, 0);
     if (!libpostal_setup_datadir((char *)datadir) || !libpostal_setup_parser_datadir((char *)datadir)) {
@@ -23,7 +23,7 @@ JNIEXPORT void JNICALL Java_com_mapzen_jpostal_AddressParser_setupDataDir
     }    
 }
 
-JNIEXPORT jobjectArray JNICALL Java_com_mapzen_jpostal_AddressParser_libpostalParse
+JNIEXPORT jobjectArray JNICALL Java_com_alibaba_logistics_lastmile_algorithm_geoinfo_libpostal_binding_AddressParser_libpostalParse
   (JNIEnv *env, jobject thisObj, jstring jAddress, jobject jOptions) {
 
     const char *address = (*env)->GetStringUTFChars(env, jAddress, 0);
@@ -100,13 +100,13 @@ JNIEXPORT jobjectArray JNICALL Java_com_mapzen_jpostal_AddressParser_libpostalPa
 }
 
 
-JNIEXPORT void JNICALL Java_com_mapzen_jpostal_AddressParser_teardown
+JNIEXPORT void JNICALL Java_com_alibaba_logistics_lastmile_algorithm_geoinfo_libpostal_binding_AddressParser_teardown
   (JNIEnv *env, jclass cls) {
     libpostal_teardown_parser();
 }
 
 
-JNIEXPORT void JNICALL Java_com_mapzen_jpostal_ParserOptions_00024Builder_setDefaultOptions
+JNIEXPORT void JNICALL Java_com_alibaba_logistics_lastmile_algorithm_geoinfo_libpostal_binding_ParserOptions_00024Builder_setDefaultOptions
   (JNIEnv *env, jobject builder) {
 
     jfieldID fid;
